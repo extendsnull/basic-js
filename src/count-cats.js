@@ -1,3 +1,5 @@
 module.exports = function countCats(backyard) {
-  return backyard.flat().filter(item => item === '^^').length;
+  return backyard.reduce((accumulator, current) => {
+    return accumulator += current.filter(item => item === '^^').length;
+  }, 0);
 };
