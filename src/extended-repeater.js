@@ -1,7 +1,15 @@
-const CustomError = require("../extensions/custom-error");
+module.exports = function repeater(str, options) {
+  const {
+    repeatTimes,
+    separator = '+',
+    addition = '',
+    additionRepeatTimes,
+    additionSeparator = '|',
+  } = options;
 
-module.exports = function repeater(/* str, options */) {
-  throw new CustomError('Not implemented');
-  // remove line with error and write your code here
+  return Array(repeatTimes).fill(String(str)).map(item => {
+    return item + Array(additionRepeatTimes)
+      .fill(String(addition))
+      .join(additionSeparator);
+  }).join(separator);
 };
-  
